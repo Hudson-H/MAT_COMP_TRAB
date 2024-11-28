@@ -39,7 +39,7 @@ double pow_calc(double base, int exp) {
     double res = 1;
 
     while(exp > 0) {
-        if(exp & 1) { // exp é ímppar?
+        if(exp & 1) { // exp é ímpar?
             res *= base; // multiplicação em evidência
         }
 
