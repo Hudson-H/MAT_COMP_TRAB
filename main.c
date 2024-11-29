@@ -30,6 +30,7 @@ int main() {
     printf("sin feito: %.30lf\n", func_sin);
     printf("erro sin: %.30lf\n", err_sin);
 
+    angle_reduction(PI/3);
 
     return 0;
 }

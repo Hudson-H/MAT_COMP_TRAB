@@ -1,3 +1,5 @@
+#include<stdio.h> // printf para teste da função
+
 #include<math.h>
 #include"const.h"
 #include"calc.h"
@@ -51,14 +53,31 @@ double pow_calc(double base, int exp) {
 }
 
 
-// sin hardcoded com *10 TERMOS*
+// sin hardcoded com *10 TERMOS* (todo: mudar para 6 termos)
 double sin_(double rad) {
     double rad2 = rad*rad;
     return (rad * (1 + rad2*(-K3+rad2*(K5+rad2*(-K7+rad2*(K9+rad2*(-K11+rad2*(K13 + rad2*(-K15+rad2*(K17+rad2*(-K19)))))))))));
 }
 
+// cos hardcoded com 7 termos 
+double cos_(double rad) {
+    double rad2 = rad*rad;
+    return (1-rad2*(K2+rad2*(K4-rad2*(K6+rad2*(K8-rad2*(K10+rad2*(K12)))))));
+}
+
 double angle_reduction (double x) {
     if ((x <= PI/4) && (x >= -PI/4)) return x; // x dentro do intervalo de confiança
 
-    double reducted = x - PI/2; // reducted é o tal do x*
+    // double reducted = x - PI/2; // reducted é o tal do x*
+
+    // redução aditiva
+    // K = (X - X*)/C
+    double k = ceil((x - MAX_VALUE) * Cinverso);
+    printf("K: %.3lf\n", k);
+    // X* = X - K.C
+    double reducted = x - (k*C);
+
+    printf("reducted: %.12f\n", reducted);
+    printf("cos: %.12lf\n", cos_(reducted));
+    printf("cos: %.12lf\n", cos(reducted));
 }
