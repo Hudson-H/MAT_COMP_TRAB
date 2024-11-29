@@ -4,17 +4,6 @@
 #include"const.h"
 #include"calc.h"
 
-// função calcula fatorial :P
-long fat_(int num) {
-    long res = 1;
-    while(num > 1) {
-        res *= num;
-        num--;
-    }
-
-    return num;
-}
-
 // verifica as condições pra usar horner
 double pow_(double base, int exp) {
     if(!base && !exp) { // base = 0, exp = 0
@@ -56,52 +45,32 @@ double pow_calc(double base, int exp) {
 // sin hardcoded com *10 TERMOS* (todo: mudar para 6 termos)
 double sin_(double rad) {
     double rad2 = rad*rad;
-    // return (rad * (1 + rad2*(-K3+rad2*(K5+rad2*(-K7+rad2*(K9+rad2*(-K11+rad2*(K13 + rad2*(-K15+rad2*(K17+rad2*(-K19)))))))))));
     return (rad * (1 + rad2*(-K3+rad2*(K5+rad2*(-K7+rad2*(K9+rad2*(-K11)))))));
+}
+
+double calculate_sin(double rad) {
+    return ((rad <= PI/4) && (rad >= -PI/4)) ? sin_(rad) : angle_reduction(rad);
 }
 
 // cos hardcoded com 7 termos 
 double cos_(double rad) {
     double rad2 = rad*rad;
-    return (1-rad2*(K2+rad2*(K4-rad2*(K6+rad2*(K8-rad2*(K10+rad2*(K12)))))));
+    return (1+rad2*(-K2+rad2*(K4+rad2*(-K6+rad2*(K8+rad2*(-K10+rad2*(K12)))))));
 }
 
 double angle_reduction (double x) {
     if ((x <= PI/4) && (x >= -PI/4)) return x; // x dentro do intervalo de confiança
 
-    // double reducted = x - PI/2; // reducted é o tal do x*
-
     // redução aditiva
     // K = (X - X*)/C
     double k = ceil((x - MAX_VALUE) * Cinverso);
-    printf("K: %.3lf\n", k);
+    // printf("ceil: %.5lf\n", k);
     // X* = X - K.C
     double reducted = x - (k*C);
-
-
-    double cos_feito = cos_(reducted);
-    double cos_original = cos(reducted);
-
-    printf("reducted: %.12f\n", reducted);
-    printf("cos: %.12lf\n", cos_feito);
-    printf("cos original: %.12lf\n", cos_original);
-    printf("erro cos: %.12lf\n", fabs(cos_feito-cos_original));
+    return cos_(reducted);
 }
 
-void verifica(double X, double Y) {
-    (X == Y) ? printf("ESTÃO CERTOS!!\n") : printf("NÃO ESTÃO CERTOS\n");
+double exp_maclaurin(double x) {
+    // Usando o método de Horner
+    return 1 + x * (1 + x * (K2 + x * (K3 + x * (K4 + x * (K5 + x * (K6 + x * K7))))));
 }
-
-
-/*
-    cola aqui as coisa que sair de output do terminal (pra mim ver tambem :P)
-
-reducted: -0.523598775593
-cos: 0.859819197777
-cos original: 0.866025403787
-erro cos: 0.006206206010
-N├âO EST├âO CERTO
-1/3!: 26494526875118662000000000000000000000000000000000000000000000000000000000000000000000000000000000000000.
-00000000000000000000
-K3: 0.16666666669999999000
- */

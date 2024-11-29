@@ -21,7 +21,7 @@
 // pi com 50 casas decimais
 #define PI 3.14159265358979323846264338327950288
 
-// Constante C para se usar na redução aditiva do sen (PI/2)
+// Constante C para se usar na redução aditiva do sen --> (PI/2)
 #define C 1.57079632679 // C também pode ser PI/4
 
 // maior valor do intervalo de confiança do sen (PI/4)

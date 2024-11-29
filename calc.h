@@ -3,11 +3,10 @@
 
 double cos_(double rad);
 double angle_reduction (double x);
-long fat_(int num);
 double pow_(double base, int exp);
 double pow_calc(double base, int exp);
 double sin_(double rad);
+double calculate_sin(double rad);
 
-void verifica(double X, double Y);
 #endif
 
