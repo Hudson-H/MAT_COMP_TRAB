@@ -23,6 +23,8 @@ int main() {
     printf("função feita: %.2lf\n", func_pow);
     printf("função original: %.2lf\n", normal_pow);
     printf("erro: %.15lf\n", fabs(func_pow-normal_pow));
+
+
     double func_sin = sin_(PI/4);
     double normal_sin = sin(PI/4);
     double err_sin = fabs(func_sin - normal_sin);
@@ -30,7 +32,16 @@ int main() {
     printf("sin feito: %.30lf\n", func_sin);
     printf("erro sin: %.30lf\n", err_sin);
 
-    angle_reduction(PI/3);
+    angle_reduction(PI/2);
+
+    verifica(((double)1)/fat_(3), K3);
+    printf("1/3!: %.20lf\n", 1/fat_(3));
+    printf("K3: %.20lf\n\n", K3);
+
+    printf("fat: %d\n", fat_(5));
+
+    printf("COSSSENO");
 
     return 0;
 }
+

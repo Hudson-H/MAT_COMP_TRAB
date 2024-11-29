@@ -8,4 +8,6 @@ double pow_(double base, int exp);
 double pow_calc(double base, int exp);
 double sin_(double rad);
 
+void verifica(double X, double Y);
 #endif
+

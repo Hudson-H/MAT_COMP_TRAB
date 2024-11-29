@@ -56,7 +56,8 @@ double pow_calc(double base, int exp) {
 // sin hardcoded com *10 TERMOS* (todo: mudar para 6 termos)
 double sin_(double rad) {
     double rad2 = rad*rad;
-    return (rad * (1 + rad2*(-K3+rad2*(K5+rad2*(-K7+rad2*(K9+rad2*(-K11+rad2*(K13 + rad2*(-K15+rad2*(K17+rad2*(-K19)))))))))));
+    // return (rad * (1 + rad2*(-K3+rad2*(K5+rad2*(-K7+rad2*(K9+rad2*(-K11+rad2*(K13 + rad2*(-K15+rad2*(K17+rad2*(-K19)))))))))));
+    return (rad * (1 + rad2*(-K3+rad2*(K5+rad2*(-K7+rad2*(K9+rad2*(-K11)))))));
 }
 
 // cos hardcoded com 7 termos 
@@ -77,7 +78,30 @@ double angle_reduction (double x) {
     // X* = X - K.C
     double reducted = x - (k*C);
 
+
+    double cos_feito = cos_(reducted);
+    double cos_original = cos(reducted);
+
     printf("reducted: %.12f\n", reducted);
-    printf("cos: %.12lf\n", cos_(reducted));
-    printf("cos: %.12lf\n", cos(reducted));
+    printf("cos: %.12lf\n", cos_feito);
+    printf("cos original: %.12lf\n", cos_original);
+    printf("erro cos: %.12lf\n", fabs(cos_feito-cos_original));
 }
+
+void verifica(double X, double Y) {
+    (X == Y) ? printf("ESTÃO CERTOS!!\n") : printf("NÃO ESTÃO CERTOS\n");
+}
+
+
+/*
+    cola aqui as coisa que sair de output do terminal (pra mim ver tambem :P)
+
+reducted: -0.523598775593
+cos: 0.859819197777
+cos original: 0.866025403787
+erro cos: 0.006206206010
+N├âO EST├âO CERTO
+1/3!: 26494526875118662000000000000000000000000000000000000000000000000000000000000000000000000000000000000000.
+00000000000000000000
+K3: 0.16666666669999999000
+ */
