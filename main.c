@@ -11,16 +11,24 @@
 
 int main() {
 
-    double func_sin = calculate_sin(PI);
-    double normal_sin = sin(PI);
+    double func_sin = calculate_sin((PI)/3);
+    double normal_sin = sin((PI)/3);
     double err_sin = fabs(func_sin - normal_sin);
-    printf("sin original: %.30lf\n", normal_sin);
-    printf("sin feito: %.30lf\n", func_sin);
-    printf("erro sin: %.30lf\n", err_sin);
+    printf("sin original: %.10lf\n", normal_sin);
+    printf("sin feito: %.10lf\n", func_sin);
+    printf("erro sin: %.10lf\n", err_sin);
 
-    printf("angle reduction [%.10lf]: %.10lf\n", PI/3 ,angle_reduction(PI/3));
-    printf("angle reduction [%.10lf]: %.10lf\n", PI/2 ,angle_reduction(PI/2));
-    printf("angle reduction [%.10lf]: %.10lf\n", PI ,angle_reduction(PI));
+    // printf("angle reduction [5PI/6]: %.10lf\n" ,angle_reduction((5*PI)/6));
+    // printf("angle reduction [PI/2]: %.10lf\n" ,angle_reduction(PI/2));
+    // printf("angle reduction [PI]: %.10lf\n\n" ,angle_reduction(PI));
+
+    double func_exp = exp_(1);
+    double normal_exp = exp(1);
+    double err_exp = fabs(func_exp - normal_exp);
+
+    printf("exp original: %.10lf\n", normal_exp);
+    printf("exp feito: %.10lf\n", func_exp);
+    printf("erro exp: %.10lf\n", err_exp);
 
     return 0;
 }

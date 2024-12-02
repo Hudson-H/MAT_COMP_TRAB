@@ -49,7 +49,10 @@ double sin_(double rad) {
 }
 
 double calculate_sin(double rad) {
-    return ((rad <= PI/4) && (rad >= -PI/4)) ? sin_(rad) : angle_reduction(rad);
+
+    double k = calculate_k(rad);
+
+    return ((rad <= PI/4) && (rad >= -PI/4)) ? sin_(rad) : cos_(angle_reduction(rad, k));
 }
 
 // cos hardcoded com 7 termos 
@@ -58,19 +61,22 @@ double cos_(double rad) {
     return (1+rad2*(-K2+rad2*(K4+rad2*(-K6+rad2*(K8+rad2*(-K10+rad2*(K12)))))));
 }
 
-double angle_reduction (double x) {
+double calculate_k(double x) {
+    // descobrir k
+    // K = (X - X*)/C
+    return ceil((x - MAX_VALUE) * Cinverso);
+}
+
+double angle_reduction (double x, double k) {
     if ((x <= PI/4) && (x >= -PI/4)) return x; // x dentro do intervalo de confiança
 
     // redução aditiva
-    // K = (X - X*)/C
-    double k = ceil((x - MAX_VALUE) * Cinverso);
-    // printf("ceil: %.5lf\n", k);
     // X* = X - K.C
-    double reducted = x - (k*C);
-    return cos_(reducted);
+    double reducted = x - (k*C); // 
+    return reducted;
 }
 
-double exp_maclaurin(double x) {
+double exp_(double x) {
     // Usando o método de Horner
-    return 1 + x * (1 + x * (K2 + x * (K3 + x * (K4 + x * (K5 + x * (K6 + x * K7))))));
+    return (1+x*(1+x*(K2+x*(K3+x*(K4+x*(K5+x*(K6+x*(K7+x*(K8+x*(K9+x*(K10+x*(K11+x*(K12+x*(K13))))))))))))));
 }
