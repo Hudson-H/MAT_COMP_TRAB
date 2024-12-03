@@ -102,6 +102,6 @@ double vitor_func(double x) {
         return cos_(x - 2*PI);
     }
 
-    printf("-> Tem bagui errado ae irmão\n");
+    printf("-> Ta extrapolando ae irmão!\n");
     return 0;
 }

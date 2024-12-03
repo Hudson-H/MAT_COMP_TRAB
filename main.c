@@ -48,7 +48,7 @@ int test_cos (double angle_to_test) {
 
 int main() {
 
-    // Gerador de testes
+    // Gerador de testes do cos
     for (int i = 0; i < 4; i++) {
 
         printf("-=-=-=-=testes %d=-=-=-=-\n", i);
