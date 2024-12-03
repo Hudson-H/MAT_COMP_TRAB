@@ -10,5 +10,7 @@ double calculate_sin(double rad);
 double calculate_k(double x);
 double exp_(double x); 
 
+double vitor_func(double x);
+
 #endif
 

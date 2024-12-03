@@ -81,3 +81,27 @@ double exp_(double x) {
     // Usando o método de Horner
     return (1+x*(1+x*(K2+x*(K3+x*(K4+x*(K5+x*(K6+x*(K7+x*(K8+x*(K9+x*(K10+x*(K11+x*(K12+x*(K13))))))))))))));
 }
+
+double vitor_func(double x) {
+    if (x < 0) {
+        printf("-> angulo negativo!\n");
+
+    } else if (x < PI/4) {
+        return cos_(x);
+
+    } else if (x < 3*PI/4) {
+        return sin_(-(x - PI/2));
+
+    } else if (x < 5*PI/4) {
+        return -(cos_(x - PI));
+
+    } else if (x < 7*PI/4) {
+        return sin_((x - PI/2) - PI);
+
+    } else if (x < 2*PI) {
+        return cos_(x - 2*PI);
+    }
+
+    printf("-> Tem bagui errado ae irmão\n");
+    return 0;
+}
