@@ -4,6 +4,27 @@
     data: 17/10/24
 */
 
+/*
+sen(x), cos(x) (não é sen ou cos de x*)
+angulos:
+0 -> k = 0; x* = 0; seno_real = 0, cos_real = 1; ========= certo
+pi/6 -> k = 0; x* = pi/6; seno_real = 0.5, cos_real = 0.86602540378; ========= certo
+pi/4 -> k = 0; x* = pi/4; seno_real = 0.70710678118, cos_real = 0.70710678118; ========= certo
+pi/3 -> k = 1; x* = -pi/4; seno_real = 0.86602540378, cos_real = 0.5; ========= certo
+pi/2 -> k = 1; x* = 0; seno_real = 1, cos_real = 0; ========= certo
+2pi/3 -> k = 1; x* = pi/6; seno_real = 0.5, cos_real = 0.86602540378; ========= certo
+3pi/4 -> k = 1; x* = pi/4; seno_real = 0.70710678118, cos_real = -0.70710678118; ========= certo
+5pi/6 -> k = 2; x* = -pi/6; seno_real = -0.5, cos_real = 0.86602540378; ------------------------- erro = 0.3660254038
+pi -> k = 2; x* = 0; seno_real = 0, cos_real = -1; ------------------------- erro = 1
+7pi/6 -> k = 2; x* = pi/6; seno_real = -0.5, cos_real = -0.86602540378; ------------------------- erro = 1.3660254038
+5pi/4 -> k = 2; x* = -pi/6; seno_real = -0.70710678118, cos_real = -0.70710678118; ------------------------- erro = 1.4142135624
+4pi/3 -> k = 3; x* = -pi/6; seno_real = -0.86602540378 (sen feito só errou sinal), cos_real = -0.5; ------------------------- erro = 1.7320508076 
+3pi/2 (-pi/2)-> k = 3; x* = 0; seno_real = -1 (errou sinal), cos_real = 0; ------------------------- erro = 2
+5pi/3 (-pi/3)-> k = 3; x* = pi/6; seno_real = -0.86602540378 (errou sinal), cos_real = 0.5; ------------------------- erro = 1.7320508076
+7pi/4 (-pi/4)-> k = 3; x* = pi/4; seno_real = -0.70710678118 (errou sinal), cos_real = 0.70710678118; ------------------------- erro = 1.7320508076
+11pi/6 (-pi/6) -> k = 4; x* = -pi/6; seno_real = -0.5, cos_real = 0.86602540378; ------------------------- erro = 1.7320508076
+*/  
+
 #include<stdio.h>
 #include<math.h>
 #include"const.h"
@@ -11,12 +32,12 @@
 
 int main() {
 
-    double func_sin = calculate_sin((PI)/3);
-    double normal_sin = sin((PI)/3);
+    double func_sin = sin_(angle_reduction(5*PI/3, calculate_k(5*PI/3)));
+    double normal_sin = sin(5*PI/3);
     double err_sin = fabs(func_sin - normal_sin);
     printf("sin original: %.10lf\n", normal_sin);
     printf("sin feito: %.10lf\n", func_sin);
-    printf("erro sin: %.10lf\n", err_sin);
+    printf("erro sin: %.10lf\n\n", err_sin);
 
     // printf("angle reduction [5PI/6]: %.10lf\n" ,angle_reduction((5*PI)/6));
     // printf("angle reduction [PI/2]: %.10lf\n" ,angle_reduction(PI/2));

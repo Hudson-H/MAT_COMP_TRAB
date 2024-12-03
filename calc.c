@@ -72,6 +72,7 @@ double angle_reduction (double x, double k) {
 
     // redução aditiva
     // X* = X - K.C
+    
     double reducted = x - (k*C); // 
     return reducted;
 }
