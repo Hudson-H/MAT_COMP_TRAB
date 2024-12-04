@@ -30,6 +30,27 @@ pi -> k = 2; x* = 0; seno_real = 0, cos_real = -1; ------------------------- err
 #include"const.h"
 #include"calc.h"
 
+void generate_sin_tests() {
+    FILE *file = fopen("errors_sin.txt", "w");
+    if (file == NULL) {
+        printf("Erro ao abrir o arquivo.\n");
+        return;
+    }
+
+    fprintf(file, "Angle (rad),vitor_sin,Original Sin,Error\n");
+
+    for (double angle = 0.0; angle <= 2 * PI; angle += 0.01) {
+        double func_sin = vitor_sin(angle);
+        double normal_sin = sin(angle);
+        double error_sin = fabs(func_sin - normal_sin);
+
+        fprintf(file, "%.15lf,%.15lf,%.15lf,%.15lf\n", angle, func_sin, normal_sin, error_sin);
+    }
+
+    fclose(file);
+    printf("Testes gerados e salvos em 'errors_sin.txt'.\n");
+}
+
 int test_cos (double angle_to_test) {
 
     // double func_sin = sin_(angle_reduction(angle_to_test, calculate_k(angle_to_test)));
@@ -85,6 +106,8 @@ int main() {
     printf("exp original: %.10lf\n", normal_exp);
     printf("exp feito: %.10lf\n", func_exp);
     printf("erro exp: %.10lf\n", err_exp);
+
+    generate_sin_tests();
 
     return 0;
 }
