@@ -33,7 +33,7 @@ pi -> k = 2; x* = 0; seno_real = 0, cos_real = -1; ------------------------- err
 int test_cos (double angle_to_test) {
 
     // double func_sin = sin_(angle_reduction(angle_to_test, calculate_k(angle_to_test)));
-    double func_cos = vitor_func(angle_to_test);
+    double func_cos = vitor_cos(angle_to_test);
 
     double normal_cos = cos(angle_to_test);
     double err_cos = fabs(func_cos - normal_cos);
@@ -46,16 +46,32 @@ int test_cos (double angle_to_test) {
     if (err_cos == 0) return 0; else return 1;
 }
 
-int main() {
+int test_sin (double angle_to_test) {
 
-    // Gerador de testes do cos
+    double func_sin = vitor_sin(angle_to_test);
+
+    double normal_sin = sin(angle_to_test);
+    double err_sin = fabs(func_sin - normal_sin);
+
+    printf("angulo original: %.10lf\n", angle_to_test);
+    printf("sin original: %.10lf\n", normal_sin);
+    printf("sin feito: %.10lf\n", func_sin);
+    printf("erro sin: %.10lf\n\n", err_sin);
+
+    if (err_sin == 0) return 0; else return 1;
+}
+
+int main() {
+    
+    // Gerador de testes do sen
+    printf("---------TESTANDO SEN---------\n");
     for (int i = 0; i < 4; i++) {
 
         printf("-=-=-=-=testes %d=-=-=-=-\n", i);
-        test_cos((i * PI/2));
-        test_cos((i * PI/2) + PI/6);
-        test_cos((i * PI/2) + PI/4);
-        test_cos((i * PI/2) + PI/3);
+        test_sin((i * PI/2));
+        test_sin((i * PI/2) + PI/6);
+        test_sin((i * PI/2) + PI/4);
+        test_sin((i * PI/2) + PI/3);
     }
 
     // printf("angle reduction [5PI/6]: %.10lf\n" ,angle_reduction((5*PI)/6));
