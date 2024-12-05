@@ -57,7 +57,7 @@ double cos_(double rad) {
 double exp_(double x) {
     // Usando o método de Horner
     // return (1+x*(1+x*(K2+x*(K3+x*(K4+x*(K5+x*(K6+x*(K7+x*(K8+x*(K9+x*(K10+x*(K11+x*(K12+x*(K13))))))))))))));
-    return (1+x*(1+x*(K2+x*(K3+x*(K4+x*(K5+x*(K6+x*(K7+x*(K8+x*(K9+x*(K10)))))))))));
+    return (1+x*(1+x*(K2+x*(K3+x*(K4)))));
 }
 
 double exp_reduction(double x) {
