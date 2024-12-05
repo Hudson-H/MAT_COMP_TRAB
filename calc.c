@@ -75,10 +75,12 @@ double exp_reduction(double x) {
     tmp_IEEE.Double.E-=8;
     double r = tmp_IEEE.x;
 
+    // 2^n(e^r)^256
     double res = exp_(r);
-
     res = pow_(res, 256);
-    res = pow_(2, k) * res;
+    double_union res_double = {res};
+    res_double.Double.E+=k;
+    res = res_double.x; 
 
     return res;
     

@@ -32,7 +32,7 @@ def plot_sin_and_error(file_name):
     plt.grid()
     plt.show()
 
-    plt.savefig("grafico_sen.pdf", format="pdf")
+    plt.savefig("grafico_sen.png", format="png")
 
     # Plota o gráfico do erro
     plt.figure(figsize=(10, 6))
@@ -44,7 +44,7 @@ def plot_sin_and_error(file_name):
     plt.grid()
     plt.show()
 
-    plt.savefig("erro.pdf", format="pdf")
+    plt.savefig("erro.png", format="png")
 
 
 # ja que ele não quer ver o código, só copiei e colei pra mudar algumas coisas kkkkkkkkkkkkkkkkkkkk
@@ -80,7 +80,7 @@ def plot_exp_and_error(file_name):
     plt.grid()
     plt.show()
 
-    plt.savefig("grafico_exp.pdf", format="pdf")
+    plt.savefig("grafico_exp.png", format="png", dpi=300)
 
     # Plota o gráfico do erro
     plt.figure(figsize=(10, 6))
@@ -92,7 +92,7 @@ def plot_exp_and_error(file_name):
     plt.grid()
     plt.show()
 
-    plt.savefig("erro_exp.pdf", format="pdf")
+    plt.savefig("erro_exp.png", format="png", dpi=300)
 # Chama a função para plotar
 plot_sin_and_error("errors_sin.txt")
 plot_exp_and_error("errors_exp.txt")
