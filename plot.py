@@ -20,9 +20,10 @@ def plot_sin_and_error(file_name):
     except FileNotFoundError:
         print(f"Erro: Arquivo '{file_name}' não encontrado.")
         return
+    
+    plt.tight_layout()
 
     # Plota o gráfico do seno
-    plt.figure(figsize=(10, 6))
     plt.plot(angles, original_sin_values, label='Seno Original', color='blue')
     plt.plot(angles, vitor_sin_values, label='Seno feito', linestyle='--', color='red')
     plt.title('Comparação entre o Seno Original e Seno feito')
@@ -35,7 +36,6 @@ def plot_sin_and_error(file_name):
     plt.savefig("grafico_sen.png", format="png")
 
     # Plota o gráfico do erro
-    plt.figure(figsize=(10, 6))
     plt.plot(angles, errors, label='Erro (|Seno Original - Seno feito|)', color='green')
     plt.title('Erro Absoluto entre o Seno Original e Seno feito')
     plt.xlabel('Ângulo (rad)')
@@ -70,7 +70,6 @@ def plot_exp_and_error(file_name):
         return
 
     # Plota o gráfico do seno
-    plt.figure(figsize=(10, 6))
     plt.plot(angles, original_sin_values, label='Exponencial original', color='blue')
     plt.plot(angles, vitor_sin_values, label='Exponencial feito', linestyle='--', color='red')
     plt.title('Comparação entre o Exponencial original e Esponencial feito')
@@ -83,7 +82,6 @@ def plot_exp_and_error(file_name):
     plt.savefig("grafico_exp.png", format="png", dpi=300)
 
     # Plota o gráfico do erro
-    plt.figure(figsize=(10, 6))
     plt.plot(angles, errors, label='Erro (|Exponencial original - Exponencial feito|)', color='green')
     plt.title('Erro Absoluto entre o Expoente original e Expoente feito')
     plt.xlabel('Expoente x')
